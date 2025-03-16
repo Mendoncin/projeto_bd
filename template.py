@@ -15,14 +15,6 @@ def Listar_medicos_especialidade():
         result = session.exec(esp).all()
         return result
 
-
-def Listar_pacientes_informações():
-    with Session(engine) as session:
-        infos = select(Paciente.nome, Paciente.dataNascimento, Paciente.endereco)
-        result = session.exec(infos).all()
-        return result
-
-
 def Consultar_consultas_paciente(identificador):
     with Session(engine) as session:
         appointment = select(Consulta).where(Consulta.pacienteID == identificador)
@@ -132,3 +124,21 @@ def Inserir_medico(crm, nome, especialidade, contato):
         doutor = Medico(CRM=crm, nome=nome, especialidade=especialidade, contato=contato)
         session.add(doutor)
         session.commit()
+
+def Inserir_medicamento(ID, nome, fabricante, indicacoes, contraindicacoes):
+    with Session(engine) as session:
+        medicamento = Medicamento(medicamentoID=ID, nome=nome, fabricante=fabricante, indicacoes=indicacoes, contraIndicacoes=contraindicacoes)
+        session.add(medicamento)
+        session.commit()
+
+def Inserir_consulta(ID, data, horario, local, diagnostico, IDpaciente, CRM, IDhospital):
+    with Session(engine) as session:
+        consulta = Consulta(consultaID=ID, dataConsulta=data, horario=horario, local=local, diagnostico=diagnostico, pacienteID=IDpaciente, CRM=CRM, hospitalID=IDhospital)
+        session.add(consulta)
+        session.commit()
+
+def Listar_medicamentos():
+    with Session(engine) as session:
+        medicamentos = select(Medicamento)
+        result = session.exec(medicamentos).all()
+        return result
