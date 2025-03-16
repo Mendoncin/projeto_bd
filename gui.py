@@ -121,7 +121,14 @@ if escolha != "Selecione...":
 
             st.write("### Resultados")
             if resultados:
-                resultados_str = [[str(item) for item in row] for row in resultados]
-                st.table(resultados_str)
+                if isinstance(resultados[0], dict):
+                    st.table(resultados)  
+                else:
+                    dados_corrigidos = {chave: [] for chave, _ in resultados[0]}  
+                    for linha in resultados:
+                        for chave, valor in linha:
+                            dados_corrigidos[chave].append(valor)  
+
+                    st.table(dados_corrigidos) 
             else:
                 st.warning("Nenhum resultado encontrado.")
