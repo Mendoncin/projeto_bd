@@ -142,3 +142,10 @@ def Listar_medicamentos():
         medicamentos = select(Medicamento)
         result = session.exec(medicamentos).all()
         return result
+    
+def Remover_paciente(IDpaciente):
+    with Session(engine) as session:
+        paciente = select(Paciente).where(Paciente.pacienteID == IDpaciente)
+        result = session.exec(paciente).all()
+        session.delete(result)
+        session.commit()

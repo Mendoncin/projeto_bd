@@ -36,6 +36,7 @@ consultas = {
     'Inserir novo médico': {"func": Inserir_medico, "param": ["crm", "nome", "especialidade", "contato"]},
     'Inserir novo medicamento': {"func": Inserir_medicamento, "param": ["ID", "nome", "fabricante", 'indicacoes', "contraindicacoes"]},
     'Inserir nova consulta': {"func": Inserir_consulta, "param": ["ID", "data", "horario", 'local', "diagnostico", 'IDpaciente', 'CRM', 'IDhospital']},
+    'Remover paciente': {"func": Remover_paciente, "param": ["IDpaciente"]},
     'Listar todos os médicos de um hospital específico': {"func": Listar_medicos_hospital, "param": "ID_Hospital"},
     'Listar medicamentos disponíveis em uma farmácia específica': {"func": Listar_medicamentos_farmacia, "param": "CNPJ_Farmácia"},
     'Listar todos os médicos por especialidade': {"func": Listar_medicos_por_especialidade, "param": "especialidade"},
