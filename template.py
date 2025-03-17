@@ -1,5 +1,6 @@
 from classes_sql import *
 from sqlmodel import Session, select
+import streamlit as st
 
 
 def Listar_hospitais_especialidades():
@@ -146,6 +147,7 @@ def Listar_medicamentos():
 def Remover_paciente(IDpaciente):
     with Session(engine) as session:
         paciente = select(Paciente).where(Paciente.pacienteID == IDpaciente)
-        result = session.exec(paciente).all()
+        result = session.exec(paciente).first()
         session.delete(result)
         session.commit()
+        st.warning('Paciente removido com sucesso')
