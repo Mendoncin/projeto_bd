@@ -151,3 +151,33 @@ def Remover_paciente(IDpaciente):
         session.delete(result)
         session.commit()
         st.warning('Paciente removido com sucesso')
+
+def Listar_abastecimentos():
+    with Session(engine) as session:
+        abastecimento = select(Abastecimento)
+        result = session.exec(abastecimento).all()
+        return result
+
+def Listar_consultas():
+    with Session(engine) as session:
+        consullta = select(Consulta)
+        result = session.exec(consullta).all()
+        return result
+
+def Listar_farmacias():
+    with Session(engine) as session:
+        farmacia = select(Farmacia)
+        result = session.exec(farmacia).all()
+        return result
+
+def Listar_laboratorios():
+    with Session(engine) as session:
+        laboratorio = select(Laboratorio)
+        result = session.exec(laboratorio).all()
+        return result
+
+def Listar_prescricoes():
+    with Session(engine) as session:
+        prescricao = select(Prescricao)
+        result = session.exec(prescricao).all()
+        return result
